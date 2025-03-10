@@ -1,5 +1,6 @@
 import "module-alias/register";
 
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
@@ -12,6 +13,7 @@ dotenv.config();
 const app = express();
 const contextPath = "/flint/api/v1";
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use(`${contextPath}/auth`, userRoutes);
