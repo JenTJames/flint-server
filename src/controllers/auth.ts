@@ -1,4 +1,4 @@
-import { hash } from "bcrypt";
+import { compare } from "bcrypt";
 import { findUserByEmail } from "@repos/user.ts";
 import createError from "http-errors";
 import { NextFunction, Request, Response } from "express";
@@ -29,10 +29,9 @@ export const authenticateUser = async (
 
     if (!user) throw createError.Unauthorized("Invalid Credentials");
 
-    const hashedPassword = await hash(password, 12);
+    const isValidPassword = await compare(password, user.dataValues.password);
 
-    if (hashedPassword !== user.dataValues.password)
-      createError.Unauthorized("Invalid Credentials");
+    if (!isValidPassword) throw createError.Unauthorized("Invalid Credentials");
     res.sendStatus(200);
   } catch (error) {
     next(error);
