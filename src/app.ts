@@ -5,7 +5,8 @@ import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
 import database from "@lib/database.ts";
-import userRoutes from "@routes/auth.ts";
+import authRoutes from "@routes/auth.ts";
+import userRoutes from "@routes/user.ts";
 import { setupSwagger } from "./swagger.ts";
 
 dotenv.config();
@@ -16,7 +17,8 @@ const contextPath = "/flint/api/v1";
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(`${contextPath}/auth`, userRoutes);
+app.use(`${contextPath}/auth`, authRoutes);
+app.use(`${contextPath}/users`, userRoutes);
 
 setupSwagger(app);
 

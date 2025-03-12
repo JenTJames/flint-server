@@ -46,6 +46,8 @@
     "@routes": "./dist/routes",
     "@controllers": "./dist/controllers",
     "@models": "./dist/models",
-    "@lib": "./dist/lib"
+    "@lib": "./dist/lib",
+    "@schemas": "./dist/schemas",
+    "@repos": "./dist/repos"
   }
 }
