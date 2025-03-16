@@ -6,6 +6,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import database from "@lib/database.ts";
 import authRoutes from "@routes/auth.ts";
+import dataRoutes from "@routes/data.ts";
 import userRoutes from "@routes/user.ts";
 import { setupSwagger } from "./swagger.ts";
 import regionRoutes from "@routes/region.ts";
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(`${contextPath}/auth`, authRoutes);
+app.use(`${contextPath}/data`, dataRoutes);
 app.use(`${contextPath}/users`, userRoutes);
 app.use(`${contextPath}/regions`, regionRoutes);
 
