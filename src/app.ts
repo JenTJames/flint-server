@@ -8,8 +8,11 @@ import database from "@lib/database.ts";
 import authRoutes from "@routes/auth.ts";
 import userRoutes from "@routes/user.ts";
 import { setupSwagger } from "./swagger.ts";
+import regionRoutes from "@routes/region.ts";
+import { initAssociations } from "@models/association.ts";
 
 dotenv.config();
+initAssociations();
 
 const app = express();
 const contextPath = "/flint/api/v1";
@@ -19,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use(`${contextPath}/auth`, authRoutes);
 app.use(`${contextPath}/users`, userRoutes);
+app.use(`${contextPath}/regions`, regionRoutes);
 
 setupSwagger(app);
 

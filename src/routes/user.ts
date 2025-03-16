@@ -1,11 +1,11 @@
-import express, { Router } from "express";
+import { Router } from "express";
 import { createUser } from "@controllers/user.ts";
 
 const router = Router();
 
 /**
  * @openapi
- * /user:
+ * /users:
  *   post:
  *     summary: Create a user
  *     servers:
@@ -57,7 +57,6 @@ const router = Router();
  *       500:
  *         description: Internal server error
  */
-
 router.post("", createUser);
 
 export default router;
